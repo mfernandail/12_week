@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <link rel="icon" href="./images/favicon.svg" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="./images/favicon.svg" />
+
+    <title>Week twelve</title>
+
+    <meta
+      name="description"
+      content="Step by step, line by line — becoming a Full Stack Developer in one year."
+    />
+    <meta name="keywords" content="HTML, CSS, JavaScript" />
+    <meta name="author" content="Maria Fernanda" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <meta property="og:title" content="Week number twelve" />
+    <meta
+      property="og:description"
+      content="Step by step, line by line — becoming a Full Stack Developer in one year."
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>App</title>
+  </head>
+  <body>
+    <header>
+      <h2>Week number twelve</h2>
+      <h3>María Fernanda | Full Stack Developer in Progress</h3>
+      <p>
+        Step by step, line by line — becoming a Full Stack Developer in one
+        year.
+      </p>
+    </header>
+
+    <main>
+      <h1>🎬 Movie Search</h1>
+
+      <form class="form_search" id="form_search">
+        <input
+          type="text"
+          name="form_inputSearch"
+          id="form_inputSearch"
+          class="form_inputSearch"
+          required
+          placeholder="Mulan"
+          inputmode="text"
+        />
+        <button type="submit" class="form_btn">Search</button>
+      </form>
+
+      <div id="loader" class="loader" style="display: none">Loading...</div>
+
+      <section id="results" class="results-grid"></section>
+
+      <div id="pagination" class="pagination hideBtn">
+        <button id="prevBtn" class="btn_pagination">⟨ Prev</button>
+        <span id="pageInfo">Page 1</span>
+        <button id="nextBtn"class="btn_pagination">Next ⟩</button>
+      </div>
+    </main>
+
+    <footer>
+      <p>2025 - Maria Fernanda</p>
+    </footer>
+
+    <script>
+      const isLocal =
+        location.hostname === "127.0.0.1" || location.hostname === "localhost"
+
+      if (isLocal) {
+        const script = document.createElement("script")
+        script.src = "./config.js"
+        document.head.appendChild(script)
+      }
+    </script>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
