@@ -148,3 +148,7 @@ main {
   position: relative;
   z-index: 2;
 }
+
+main h1:hover {
+  cursor: pointer;
+}

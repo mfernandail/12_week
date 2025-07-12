@@ -9,10 +9,8 @@
 - Reusing and extending existing codebases.
 - Managing state with JavaScript to track favorite movies.
 - Updating and persisting data using `localStorage`.
-- Conditional rendering based on user interaction.
 - Creating reusable components (e.g., movie cards with action buttons).
 - Handling user interactions (like adding/removing favorites).
-- Improving UX by updating UI state dynamically.
 
 ---
 
