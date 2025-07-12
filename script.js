@@ -1,21 +1,65 @@
 const btnForm = document.querySelector('.form_btn')
 const inputForm = document.querySelector('.form_inputSearch')
 const result = document.querySelector('#results')
+const titleForm = document.querySelector('main h1')
+const changeView = document.querySelector('#changeView')
 
 const pagination = document.querySelector('.pagination')
 const prevBtn = document.getElementById('prevBtn')
 const nextBtn = document.getElementById('nextBtn')
 const pageInfo = document.getElementById('pageInfo')
 
+let favoritesLocalStorage =
+  JSON.parse(localStorage.getItem('moviesFavorites')) || []
+
 let currentPage = 1
 let totalPages = 1
 let currentQuery = ''
+
+titleForm.addEventListener('click', () => {
+  result.innerHTML = ''
+  pagination.classList.add('hideBtn')
+  inputForm.value = ''
+})
 
 btnForm.addEventListener('click', searchMovie)
 
 inputForm.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') searchMovie(e)
 })
+
+changeView.addEventListener('click', changeViewFn)
+
+function changeViewFn(e) {
+  if (e.target.value === 'Favorites') {
+    e.target.value = 'Search movies'
+  } else {
+    e.target.value = 'Favorites'
+  }
+}
+
+result.addEventListener('click', addRemFn)
+
+function addRemFn(e) {
+  e.preventDefault()
+  if (e.target.classList.contains('addFav')) {
+    const movie = e.target.parentElement
+
+    const infoMovie = {
+      title: movie.querySelector('h1').textContent,
+      poster: movie.querySelector('img').src,
+      imdbID: movie.querySelector('a').getAttribute('id-data'),
+    }
+    favoritesLocalStorage = [...favoritesLocalStorage, infoMovie]
+
+    localStorage.setItem(
+      'moviesFavorites',
+      JSON.stringify(favoritesLocalStorage)
+    )
+  } else if (e.target.classList.contains('addRem')) {
+    console.log('rem')
+  }
+}
 
 function searchMovie(e) {
   e.preventDefault()
@@ -71,7 +115,7 @@ async function fetchMovie(title, page = 1) {
 
 function createCardMovie(data) {
   result.innerHTML = ''
-
+  console.log(data)
   data.forEach((movie) => {
     const poster =
       movie.Poster && movie.Poster !== 'N/A'
@@ -84,7 +128,9 @@ function createCardMovie(data) {
     card.innerHTML = `
       <h1 class="card_title">${movie.Title}</h1>
       <img src=${poster} alt=${movie.Title} class="card_image" onerror="this.onerror=null; this.src='./images/no_found.png';" />
-    `
+      <a href="#" id-data=${movie.imdbID} class="addFav">Add</a>
+      <a href="#" id-data=${movie.imdbID} class="addRem">Remove</a>
+      `
     result.appendChild(card)
   })
 }
