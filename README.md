@@ -8,12 +8,10 @@
 
 - Reusing and extending existing codebases.
 - Managing state with JavaScript to track favorite movies.
-- Updating and persisting data using `localStorage`.
-- Creating reusable components (e.g., movie cards with action buttons).
+- Updating and persisting data using `localStorage`.****
 - Handling user interactions (like adding/removing favorites).
 
 ---
-
 ### 💻 Mini Project: Movie Favorites App ⭐️
 
 A web app that builds upon the Week 11 project, allowing users to search for movies and mark their favorites. It uses the OMDb API to fetch movie data and adds local state management for storing and displaying favorite selections.
@@ -25,7 +23,6 @@ Features include:
 - All functionality from the Week 11 project  
 - “Add to Favorites” and “Remove from Favorites” buttons  
 - Local persistence using `localStorage`  
-- Visual indicator for saved favorites  
-- Toggle view between all movies and favorite movies  
+- Visual indicator for saved favorites
 
 🔑 API key continues to be handled conditionally via a local `config.js` file only during development (`localhost`).
